@@ -70,7 +70,6 @@ export const createOptions = async (req, res) => {
 
     // Dynamically determine the base URL
     const baseUrl = `${req.protocol}://${req.get("host")}`;
-    console.log(baseUrl);
     const link_to_vote = `${baseUrl}/options/${option.id}/add_vote`;
 
     // Save the generated vote link in the option document
