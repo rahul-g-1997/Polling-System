@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+import routes from "./routes/index.js";
 
 const app = express();
 
@@ -10,9 +11,11 @@ app.use(
     credentials: true,
   })
 );
-
 app.use(express.json({ limit: "21kb" }));
 app.use(express.urlencoded({ extended: true, limit: "21kb" }));
+// Routing
+app.use("/", routes);
+
 app.use(cookieParser());
 
 export { app };
