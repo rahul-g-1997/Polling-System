@@ -68,8 +68,10 @@ export const createOptions = async (req, res) => {
       question,
     });
 
-    // Generate a link to vote for this option
-    const link_to_vote = `https://polling-system-o8gz.vercel.app/options/${option.id}/add_vote`;
+    // Dynamically determine the base URL
+    const baseUrl = `${req.protocol}://${req.get("host")}`;
+    console.log(baseUrl);
+    const link_to_vote = `${baseUrl}/options/${option.id}/add_vote`;
 
     // Save the generated vote link in the option document
     option.link_to_vote = link_to_vote;
