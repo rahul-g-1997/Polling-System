@@ -69,7 +69,7 @@ export const createOptions = async (req, res) => {
     });
 
     // Generate a link to vote for this option
-    const link_to_vote = `http://localhost:8000/options/${option.id}/add_vote`;
+    const link_to_vote = `https://polling-system-o8gz.vercel.app/options/${option.id}/add_vote`;
 
     // Save the generated vote link in the option document
     option.link_to_vote = link_to_vote;
