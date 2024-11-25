@@ -19,7 +19,7 @@ export const deleteOption = async (req, res) => {
 
     // Check if the votes count is greater than 0 and prevent deletion if so
     if (option.votes > 0) {
-      return res.status(200).json({
+      return res.status(400).json({
         message: "Option has votes, cannot delete.", // Prevent deletion if there are votes
       });
     }
