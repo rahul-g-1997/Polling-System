@@ -53,7 +53,7 @@ This is a backend API built to manage a simple polling system. Users can create 
    ```
 2. Navigate to the project folder:
    ```bash
-   cd polling-system-api
+   cd polling-system
    ```
 3. Install dependencies:
    ```bash
@@ -145,7 +145,6 @@ polling-system-api/
          "title": "What is your favorite programming language?"
        }
        ```
-
 
 ---
 
