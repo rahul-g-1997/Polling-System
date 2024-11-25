@@ -1,29 +1,39 @@
 import mongoose from "mongoose";
 
+// Define the schema for the "Option" collection in MongoDB
 const optionSchema = new mongoose.Schema(
   {
+    // Text content of the option
     text: {
       type: String,
-      required: true,
+      required: true, // This field is mandatory
     },
+
+    // Number of votes associated with this option
     votes: {
       type: Number,
-      default: 0,
+      default: 0, // Default vote count is 0
     },
+
+    // URL that allows users to directly vote for this option
     link_to_vote: {
-      type: String,
+      type: String, // Optional field to store the voting link
     },
+
+    // Reference to the related question
     question: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Question",
-      required: true,
+      type: mongoose.Schema.Types.ObjectId, // MongoDB ObjectId that references the "Question" collection
+      ref: "Question", // Reference to the "Question" model
+      required: true, // Every option must belong to a question
     },
   },
   {
-    timestamps: true,
+    timestamps: true, // Automatically adds createdAt and updatedAt fields
   }
 );
 
+// Create a model for the "Option" collection based on the schema
 const Option = mongoose.model("Option", optionSchema);
 
+// Export the model to use it in other parts of the application
 export default Option;
