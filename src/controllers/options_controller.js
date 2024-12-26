@@ -13,14 +13,14 @@ export const deleteOption = async (req, res) => {
     // Check if the option exists
     if (!option) {
       return res.status(400).json({
-        message: "Option not found", // Return error if option not found
+        message: "Option not found", 
       });
     }
 
     // Check if the votes count is greater than 0 and prevent deletion if so
     if (option.votes > 0) {
       return res.status(200).json({
-        message: "Option has votes, cannot delete.", // Prevent deletion if there are votes
+        message: "Option has votes, cannot delete.", 
       });
     }
 
@@ -36,14 +36,14 @@ export const deleteOption = async (req, res) => {
     // Return success response
     return res.status(200).json({
       success: true,
-      message: "Option deleted successfully!", // Confirmation message
+      message: "Option deleted successfully!", 
     });
   } catch (err) {
     // Catch any unexpected errors and log them
     console.error("Error:", err);
     // Return a server error response
     return res.status(500).json({
-      message: "Internal server error", // Server-side error
+      message: "Internal server error", 
     });
   }
 };
@@ -60,7 +60,7 @@ export const addVote = async (req, res) => {
     // Check if the option exists
     if (!option) {
       return res.status(400).json({
-        message: "Option not found", // Return error if option not found
+        message: "Option not found", 
       });
     }
 
@@ -82,14 +82,14 @@ export const addVote = async (req, res) => {
     // Return the updated option in the response
     return res.status(200).json({
       success: true,
-      option, // Include the updated option data
+      option,
     });
   } catch (err) {
     // Catch any unexpected errors and log them
     console.error("Error:", err);
     // Return a server error response
     return res.status(500).json({
-      message: "Internal server error", // Server-side error
+      message: "Internal server error",
     });
   }
 };

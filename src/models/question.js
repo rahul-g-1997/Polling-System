@@ -6,7 +6,7 @@ const questionSchema = new mongoose.Schema(
     // Title of the question
     title: {
       type: String,
-      required: true, // This field is mandatory
+      required: true, 
     },
 
     // Array of references to the related options
@@ -20,7 +20,7 @@ const questionSchema = new mongoose.Schema(
     // Total number of votes across all options for the question
     totalVotes: {
       type: Number,
-      default: 0, // Default value is 0
+      default: 0, 
     },
   },
   {

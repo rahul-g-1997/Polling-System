@@ -7,7 +7,7 @@ export const createQuestion = async (req, res) => {
     // Check if request body is empty
     if (!req.body) {
       return res.status(400).json({
-        message: "Request body is missing", // Missing request body
+        message: "Request body is missing",
       });
     }
 
@@ -17,7 +17,7 @@ export const createQuestion = async (req, res) => {
     // Ensure that the title is provided for the question
     if (!title) {
       return res.status(400).json({
-        message: "Title is required for creating a question", // Missing title
+        message: "Title is required for creating a question",
       });
     }
 
@@ -27,13 +27,13 @@ export const createQuestion = async (req, res) => {
     // Return success response with the created question
     return res.status(200).json({
       success: true,
-      question, // Return the created question
+      question,
     });
   } catch (err) {
     // Catch unexpected errors
     console.error("Error:", err);
     return res.status(500).json({
-      message: "Internal server error", // General error message
+      message: "Internal server error",
     });
   }
 };
@@ -48,7 +48,7 @@ export const createOptions = async (req, res) => {
     // Check if the option text is provided
     if (!text) {
       return res.status(400).json({
-        message: "Text is required for creating an option", // Missing text for option
+        message: "Text is required for creating an option",
       });
     }
 
@@ -58,7 +58,7 @@ export const createOptions = async (req, res) => {
     // Ensure the question exists
     if (!question) {
       return res.status(400).json({
-        message: "Question not found!", // Question doesn't exist
+        message: "Question not found!",
       });
     }
 
@@ -84,7 +84,7 @@ export const createOptions = async (req, res) => {
     // Return success response with the created option
     return res.status(200).json({
       success: true,
-      option, // Return the created option
+      option,
     });
   } catch (err) {
     // Catch unexpected errors
@@ -95,7 +95,6 @@ export const createOptions = async (req, res) => {
   }
 };
 
-// Controller to delete a specific question
 // Controller to delete a specific question
 export const deleteQuestion = async (req, res) => {
   try {
@@ -108,14 +107,14 @@ export const deleteQuestion = async (req, res) => {
     // Check if the question exists
     if (!question) {
       return res.status(400).json({
-        message: "Question not found", // Question doesn't exist
+        message: "Question not found",
       });
     }
 
     // Check if any options have votes (if totalVotes > 0, it can't be deleted)
     if (question.totalVotes > 0) {
       return res.status(400).json({
-        message: "Option has votes, cannot delete.", // Prevent deletion if there are votes
+        message: "Option has votes, cannot delete.",
       });
     }
 
@@ -130,13 +129,13 @@ export const deleteQuestion = async (req, res) => {
     // Return success message after deletion
     return res.status(200).json({
       success: true,
-      message: "Question and associated options deleted successfully!", // Successful deletion message
+      message: "Question and associated options deleted successfully!",
     });
   } catch (err) {
     // Catch unexpected errors
     console.error("Error:", err);
     return res.status(500).json({
-      message: "Internal server error", // General error message
+      message: "Internal server error",
     });
   }
 };
@@ -149,27 +148,27 @@ export const viewQuestion = async (req, res) => {
 
     // Populate the question document with its associated options
     const question = await Question.findById(questionId).populate({
-      path: "options", // Populate the options field of the question
-      model: "Option", // The model to use for the population
+      path: "options",
+      model: "Option",
     });
 
     // Check if the question exists
     if (!question) {
       return res.status(400).json({
-        message: "Question not found", // Question doesn't exist
+        message: "Question not found",
       });
     }
 
     // Return the question and its options
     return res.status(200).json({
       success: true,
-      question, // Return the populated question with options
+      question,
     });
   } catch (err) {
     // Catch unexpected errors
     console.error("Error:", err);
     return res.status(500).json({
-      message: "Internal server error", // General error message
+      message: "Internal server error",
     });
   }
 };

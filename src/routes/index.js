@@ -14,11 +14,9 @@ const routes = express.Router();
 // Define the root route ("/") and assign the homeController to handle GET requests
 routes.get("/", homeController);
 
-// Mount the questions router under the "/questions" path
 // All routes defined in questionsRouter will now be prefixed with "/questions"
 routes.use("/questions", questionsRouter);
 
-// Mount the options router under the "/options" path
 // All routes defined in optionsRouter will now be prefixed with "/options"
 routes.use("/options", optionsRouter);
 

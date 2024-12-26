@@ -6,7 +6,7 @@ const optionSchema = new mongoose.Schema(
     // Text content of the option
     text: {
       type: String,
-      required: true, // This field is mandatory
+      required: true, 
     },
 
     // Number of votes associated with this option
@@ -24,7 +24,7 @@ const optionSchema = new mongoose.Schema(
     question: {
       type: mongoose.Schema.Types.ObjectId, // MongoDB ObjectId that references the "Question" collection
       ref: "Question", // Reference to the "Question" model
-      required: true, // Every option must belong to a question
+      required: true, 
     },
   },
   {

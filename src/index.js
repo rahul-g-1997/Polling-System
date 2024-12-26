@@ -13,17 +13,14 @@ const port = process.env.PORT || 3000;
 // Connect to the MongoDB database
 connectDB()
   .then(() => {
-    // If the database connection is successful, set up the server
 
-    // Handle server-level errors and log them
     app.on("error", (error) => {
-      console.log("Error", error); // Log the error
-      throw error; // Rethrow the error for debugging
+      console.log("Error", error); 
+      throw error; 
     });
 
-    // Start the Express server and listen for incoming requests on the specified port
     app.listen(port, () => {
-      console.log(`Server listening on ${port}`); // Log the success message with the server's port
+      console.log(`Server listening on ${port}`); 
     });
   })
   .catch((error) => {
